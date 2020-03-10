@@ -6,7 +6,6 @@ const T = i18n.createComponent();
 
 
 export const MsgType = (props) => {
-  console.log(props.num);
     switch (props.type){
     // bank
     case "cosmos-sdk/MsgSend":

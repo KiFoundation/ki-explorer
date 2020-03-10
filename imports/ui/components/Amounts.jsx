@@ -10,7 +10,6 @@ import _ from 'lodash';
 const T = i18n.createComponent();
 
 MultiTx = (props) => {
-  console.log(props.hash);
     return <div>
         <Link className="primary-color" to={"/transactions/"+props.hash}><T>common.more-s</T></Link>
     </div>

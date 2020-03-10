@@ -92,7 +92,7 @@ export default class AccountTooltip extends Account{
             <span ref={this.ref} key='link'>
                 <Link className="primary-color font-800" to={this.state.address}>{this.userIcon()}{this.state.moniker}</Link>
             </span>,
-            this.renderDetailTooltip()
+            // this.renderDetailTooltip()
         ]
     }
 }

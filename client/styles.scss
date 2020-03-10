@@ -1,16 +1,8 @@
 @import "materia/variables";
 @import "bootstrap";
 @import "materia/bootswatch";
-
-$primary: #043bea;
-$secondary: #9a78f7;
-$light: #bcb5d8;
-$secondary-light: #b399f8;
-$dark: #2d1d67;
-$secondary-dark: #444;
-$body-bg-color: #f3f4f7;
-$body-color: $dark;
-$normal-shadow: 0 10px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+@import "./styles/variables";
+@import "./styles/progress-bar";
 
 body {
     font-size: inherit !important;
@@ -64,6 +56,7 @@ body {
 }
 
 .filter-pills.nav-pills .nav-link.active {
+  cursor: pointer;
   color: $secondary;
   background: transparent;
   border: 2px solid $secondary;
@@ -371,7 +364,7 @@ span#network-nav.network-name{
   img.moniker-avatar-list {
     height: 24px;
     margin-right: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    // border: 1px solid rgba(0, 0, 0, 0.3);
   }
 
   div {
@@ -1201,11 +1194,6 @@ span#network-nav.network-name{
     background-color: #000000;
   }
 
-  .progress-bar {
-    background-color: $primary;
-    opacity: 0.7;
-    font-weight: 400;
-    padding: 5px 5px;
-    font-size: 12px;
-    border-radius: 7px;
+.nav-link {
+  cursor: pointer;
 }

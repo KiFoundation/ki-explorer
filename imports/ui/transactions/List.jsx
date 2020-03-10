@@ -27,6 +27,7 @@ export default class Transactions extends Component{
                             key={i}
                             index={i}
                             tx={tx}
+                            history={this.props.history}
                         />
                     })
                 })
@@ -42,14 +43,14 @@ export default class Transactions extends Component{
             return <div><T>transactions.notFound</T></div>
         }
         else{
-            return <div className="transactions-list">
-                <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}}>
-                <Col xs={3} lg={{size:1}}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.txHash</T></span></Col>
-                <Col xs={5} md={3} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.type</T></span></Col>
-                <Col xs={5} md={3} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.amount</T></span></Col>
-                <Col xs={4} md={2} lg={1}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>common.height</T></span></Col>
-                <Col xs={2} md={1} className="text-nowrap"><span className="d-none d-lg-inline-block text-uppercase dark-color"><T>transactions.valid</T></span></Col>
-                <Col xs={12} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.fee</T></span></Col>
+            return <div className="transactions-list mt-4 pt-1">
+                <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4 text-left" style={{border: 0}}>
+                <Col xs={3} lg={1}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color font-500 list-title"><T>transactions.txHash</T></span></Col>
+                <Col xs={5} md={3} lg={2}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color font-500 list-title"><T>transactions.type</T></span></Col>
+                <Col xs={5} md={3} lg={2}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color font-500 list-title"><T>transactions.amount</T></span></Col>
+                <Col xs={4} md={2} lg={1}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color font-500 list-title"><T>common.height</T></span></Col>
+                <Col xs={2} md={1} className="text-nowrap"><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color font-500 list-title"><T>transactions.valid</T></span></Col>
+                <Col xs={12} lg={2}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color font-500 list-title"><T>transactions.fee</T></span></Col>
                 </Row>
                 {this.state.txs}
             </div>
