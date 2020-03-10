@@ -127,11 +127,10 @@ export default ValidatorListContainer = withTracker((props) => {
         }
         
     }
-    // console.log(props.state.limit);
     return {
         loading,
         validatorsExist,
         validators: validatorsExist ? validators : {},
-        chainStatus: validatorsExist ? chainStatus : {}
+        chainStatus: validatorsExist ? chainStatus : {},
     };
 })(List);

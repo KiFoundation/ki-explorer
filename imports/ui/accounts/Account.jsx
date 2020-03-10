@@ -165,13 +165,16 @@ export default class AccountDetails extends Component{
                         <Card className="mb-0 h-100 normal-shadow">
                             <CardBody>
                                 <div className="d-block mb-2">
-                                    <span className="light-color text-uppercase font-500"><T>validators.address</T></span>
+                                    <span className="light-color text-uppercase font-500"><T>validators.rewardAddress</T></span>
                                     <div className="dark-color font-800"><span>{this.state?.address}</span></div>
                                 </div>
-                                <div className="d-block mb-2">
-                                    <span className="light-color text-uppercase font-500 d-block"><T>validators.rewardAddress</T></span>
-                                    <span className="dark-color font-800">{this.state?.operator_address}</span>
-                                </div>
+                                {
+                                    this.state.operator_address &&
+                                    <div className="d-block mb-2">
+                                        <span className="light-color text-uppercase font-500 d-block"><T>validators.operatorAddress</T></span>
+                                        <Link className="dark-color font-800" to={"/validator/"+this.state.operator_address}>{this.state?.operator_address}</Link>
+                                    </div>
+                                }
                             </CardBody>
                         </Card>
                     </Col>

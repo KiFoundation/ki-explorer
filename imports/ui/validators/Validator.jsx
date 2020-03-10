@@ -177,6 +177,14 @@ export default class Validator extends Component{
     }
 
     render() {
+        const delegatorShares = this.props.validator.delegator_shares / Math.pow(10, 6)
+
+        const selfDelegation = this.props.validator.self_delegation * delegatorShares
+        const selfDelegationRatio = this.props.validator.self_delegation 
+
+        const otherDelegation = delegatorShares - selfDelegation
+        const otherDelegationRatio = 1 - this.props.validator.self_delegation
+
         if (this.props.loading){
             return <Spinner type="grow" color="primary" />
         }
@@ -189,7 +197,7 @@ export default class Validator extends Component{
 
                 return <div className="validator-details">
                     <Helmet>
-                        <title>{ moniker } - Cosmos Validator | The Big Dipper</title>
+                        <title>{ moniker } - Validator on Ki Chain</title>
                     <meta name="description" content={details} />
                   </Helmet>
                     {/* <Col xs={12}>
@@ -208,7 +216,7 @@ export default class Validator extends Component{
                                     </div>
                                     <div>
                                         <span className="font-800 dark-color"><T>validators.uptime</T>: </span>
-                                        <span className="dark-color">{this.props.validator.commission&&this.props.validator.commission.commission_rates?numbro(this.props.validator.commission.commission_rates.max_rate*100).format('0.00')+"%":''}</span>
+                                        <span className="dark-color">{this.props.validator.uptime && this.props.validator.uptime + '%' || ''}</span>
                                     </div>
                                 </div>
                                 {/* <div className="identity"><KeybaseCheck identity={identity} showKey /></div>
@@ -220,7 +228,7 @@ export default class Validator extends Component{
                             <Card className="mb-0 h-100 normal-shadow">
                                 <CardBody>
                                     <div className="d-block mb-2">
-                                        <span className="light-color text-uppercase font-500"><T>validators.address</T></span>
+                                        <span className="light-color text-uppercase font-500"><T>validators.operatorAddress</T></span>
                                         <div className="dark-color font-800"><span>{this.props.validator.operator_address}</span></div>
                                     </div>
                                     <div className="d-block mb-2">
@@ -243,10 +251,10 @@ export default class Validator extends Component{
                                                 <T>validators.self</T>
                                             </span>
                                             <span className="d-block">
-                                                {numbro(this.props.validator.self_delegation).format("0,0.00%")}
+                                                {numbro(selfDelegationRatio).format({output: 'percent', mantissa: 2})}
                                             </span>
                                             <span className="d-block">
-                                                1.000000
+                                                {numbro(selfDelegation).format({thousandSeparated: true, mantissa: 0})}
                                             </span>
                                         </div>
                                         <div className="pl-3 ml-auto" style={{borderLeft: '3px solid #043bea'}}>
@@ -254,10 +262,10 @@ export default class Validator extends Component{
                                                 <T>validators.others</T>
                                             </span>
                                             <span className="d-block">
-                                                99%
+                                                {numbro(otherDelegationRatio).format({output: 'percent', mantissa: 2})}
                                             </span>
                                             <span className="d-block">
-                                                11,314,123
+                                                {numbro(otherDelegation).format({thousandSeparated: true, mantissa: 0})}
                                             </span>
                                         </div>
                                     </div>
@@ -361,11 +369,11 @@ export default class Validator extends Component{
                                         <div className="power-history mx-2 px-2">
                                             <Row className="header text-nowrap d-none d-sm-flex latest-block-page mb-3 mt-4" style={{ border: 0 }}>                
                                                 {/* <Col sm={2}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.hash</T></span></Col> */}
-                                                <Col md={3}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.height</T></span></Col>
-                                                <Col md={3}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.amount</T></span></Col>
+                                                <Col md={4}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.height</T></span></Col>
+                                                <Col md={4}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.amount</T></span></Col>
                                                 {/* <Col sm={3} md={2} lg={3}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>blocks.proposer</T></span></Col> */}
                                                 {/* <Col sm={1} md={2}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>blocks.numOfTxs</T></span></Col> */}
-                                                <Col md={3}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.time</T> (UTC)</span></Col>
+                                                <Col md={4}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.time</T> (UTC)</span></Col>
                                             </Row>
                                             {this.state.history}
                                         </div>
