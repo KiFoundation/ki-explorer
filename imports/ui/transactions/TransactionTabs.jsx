@@ -107,6 +107,7 @@ export default class TransactionTabs extends Component{
                                         key={i}
                                         index={i}
                                         tx={tx}
+                                        
                                         blockList
                                     />
                                 }):''}

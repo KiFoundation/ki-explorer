@@ -168,14 +168,14 @@ export default class PowerHistory extends React.Component {
                 // <CardBody>
                     <Row className="bg-white my-2 py-3 list-border">
                         {/* <Col xs={2} className={(this.props.type == 'down' || this.props.type == 'remove')?'text-danger':(this.props.type == 'up'?'text-success':'text-warning')}><i className={changeClass}></i> </Col> */}
-                        <Col md={3} className="text-secondary vertical-align justify-start"><i className="fas fa-cube light-color mr-2"></i> {numbro(this.props.height).format('0,0')}</Col>
-                        <Col md={3} className="vertical-align justify-start">
+                        <Col md={4} className="text-secondary vertical-align justify-start"><i className="fas fa-cube light-color mr-2"></i> {numbro(this.props.height).format('0,0')}</Col>
+                        <Col md={4} className="vertical-align justify-start">
                             <span className="voting-power" style={{top: 'initial', fontSize: 'inherit'}}>{numbro(this.props.prevVotingPower).format('0,0')}</span>
                             <i className="material-icons text-info">arrow_forward</i>
                             <span className="voting-power" style={{top: 'initial', fontSize: 'inherit'}}>{numbro(this.props.votingPower).format('0,0')}</span>
                             <span className="ml-2">{this.state.diff}</span>
                         </Col>
-                        <Col md={3} className="text-secondary vertical-align justify-start"><i className="far fa-clock"></i> {momemt.utc(this.props.time).format("D MMM YYYY, h:mm:ssa z")}</Col>
+                        <Col md={4} className="text-secondary vertical-align justify-start"><i className="far fa-clock"></i> {momemt.utc(this.props.time).format("D MMM YYYY, h:mm:ssa z")}</Col>
                     </Row>
                 // </CardBody>
                 // {this.state.tx}

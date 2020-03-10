@@ -49,11 +49,15 @@ consensus:
     step: 'Step'
 chainStates:
     price: 'Price'
+    tooltipPrice: 'Current market value of token'
     marketCap: 'Market Cap'
     inflation: 'Inflation'
+    tooltipInflation: 'Amount of newly created tokens'
     communityPool: 'Community Pool'
     height: 'Height'
+    tooltipHeight: 'Number of last block'
     bondedTokens: 'Bonded'
+    tooltipBonded: 'Number of staked / locked tokens'
 chainStatus:
     startMessage: 'The chain is going to start in'
     stopWarning: 'The chain appears to be stopped for <em>{$time}</em>! Feed me with new blocks 😭!'

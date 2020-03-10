@@ -108,7 +108,7 @@ export default class Transactions extends Component{
                 >
                 </Sidebar>} />
             </Switch>
-            <List limit={this.state.limit} />
+            <List limit={this.state.limit} history={this.props.history} />
             <LoadMore show={this.state.loadmore} />
         </div>
     }

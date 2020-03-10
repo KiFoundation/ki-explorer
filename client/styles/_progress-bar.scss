@@ -1,0 +1,26 @@
+.progress-bar {
+
+    background-color: $primary;
+    opacity: 0.7;
+    font-weight: 400;
+    padding: 5px 5px;
+    font-size: 12px;
+    border-radius: 7px;
+
+    &.custom-uptime {
+        background-color: $light;
+        opacity: 1;
+        font-weight: 400;
+        padding: 5px 5px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+}
+
+.progress {
+    border-radius: 5px;
+
+    .progress-bar {
+        border-radius: 0;
+    }
+}

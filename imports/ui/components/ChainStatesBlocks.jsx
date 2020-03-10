@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Link } from 'react-router-dom';
-import { Card, CardHeader, Row, Col } from 'reactstrap';
+import { Card, CardHeader, Row, Col, Tooltip } from 'reactstrap';
 import numbro from 'numbro';
 import i18n from 'meteor/universe:i18n';
 import Coin from '/both/utils/coins.js';
+
 
 const T = i18n.createComponent();
 
@@ -34,16 +34,30 @@ export default class ChainStatesBlocks extends Component{
             this.state = data;
         }
         else{
+            this.togglePrice = this.togglePrice.bind(this)
+            this.toggleHeight = this.toggleHeight.bind(this)
+            this.toggleBonded = this.toggleBonded.bind(this)
+            this.toggleInflation = this.toggleInflation.bind(this)
+
             this.state = {
                 price: "0.035",
                 marketCap: "-",
                 inflation: 0,
                 communityPool: 0,
                 height: 0,
-                bondedTokens: 0
+                bondedTokens: 0,
+                tooltipPriceOpen: false,
+                tooltipHeightOpen: false,
+                tooltipBondedOpen: false,
+                tooltipInflationOpen: false
             }
         }
     }
+
+    togglePrice = () => Meteor.isClient && this.setState({tooltipPriceOpen: !this.state.tooltipPriceOpen})
+    toggleHeight = () => Meteor.isClient && this.setState({tooltipHeightOpen: !this.state.tooltipHeightOpen})
+    toggleBonded = () => Meteor.isClient && this.setState({tooltipBondedOpen: !this.state.tooltipBondedOpen})
+    toggleInflation = () => Meteor.isClient && this.setState({tooltipInflationOpen: !this.state.tooltipInflationOpen})
 
     componentDidUpdate(prevProps){
         if (this.props.chainStates != prevProps.chainStates){
@@ -75,6 +89,7 @@ export default class ChainStatesBlocks extends Component{
             }
         }
     }
+
     render(){
         return (
             <Row>
@@ -85,7 +100,15 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.price</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
+                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                                <T>chainStates.price</T>
+                                                <span className="rounded-icon ml-1" id="tooltip-price" style={{ height: 17, width: 17 }}>
+                                                    <i class="fas fa-question" style={{fontSize: 8}} />
+                                                </span>
+                                                <Tooltip placement="top" isOpen={this.state.tooltipPriceOpen} autohide={false} target="tooltip-price" toggle={this.togglePrice}>
+                                                    <T>chainStates.tooltipPrice</T>
+                                                </Tooltip>
+                                            </span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
@@ -103,7 +126,15 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.height</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
+                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                                <T>chainStates.height</T>
+                                                <span className="rounded-icon ml-1" id="tooltip-height" style={{ height: 17, width: 17 }}>
+                                                    <i class="fas fa-question" style={{fontSize: 8}}></i>
+                                                </span>
+                                                <Tooltip placement="top" isOpen={this.state.tooltipHeightOpen} autohide={false} target="tooltip-height" toggle={this.toggleHeight}>
+                                                    <T>chainStates.tooltipHeight</T>
+                                                </Tooltip>
+                                            </span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
@@ -121,7 +152,15 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.bondedTokens</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
+                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                                <T>chainStates.bondedTokens</T>
+                                                <span className="rounded-icon ml-1" id="tooltip-bonded" style={{ height: 17, width: 17 }}>
+                                                    <i class="fas fa-question" style={{fontSize: 8}} />
+                                                </span>
+                                                <Tooltip placement="top" isOpen={this.state.tooltipBondedOpen} autohide={false} target="tooltip-bonded" toggle={this.toggleBonded}>
+                                                    <T>chainStates.tooltipBonded</T>
+                                                </Tooltip>
+                                            </span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
@@ -140,7 +179,15 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.inflation</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
+                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                                <T>chainStates.inflation</T>
+                                                <span className="rounded-icon ml-1" id="tooltip-inflation" style={{ height: 17, width: 17 }}>
+                                                    <i class="fas fa-question" style={{fontSize: 8}} />
+                                                </span>
+                                                <Tooltip placement="top" isOpen={this.state.tooltipInflationOpen} autohide={false} target="tooltip-inflation" toggle={this.toggleInflation}>
+                                                    <T>chainStates.tooltipInflation</T>
+                                                </Tooltip>
+                                            </span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">

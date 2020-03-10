@@ -20,10 +20,10 @@
         "gasPrice": 0.02,
         "coingeckoId": "cosmos"
     },
-    "genesisFile": "",
+    "genesisFile": "https://drive.google.com/uc?export=download&id=1KrvvuWUVv3j--90FneaiH9gDb8k71ebJ",
     "remote":{
-        "rpc":"",
-        "lcd":""
+        "rpc":"http://blockchain-0.srv.kifoundation.tech:36657",
+        "lcd":"http://blockchain-0.srv.kifoundation.tech:4317"
     },
     "debug": {
         "startTimer": true,
