@@ -380,7 +380,7 @@ export default class Validator extends Component{
                                     }
                                 />
                                 <Route path="/(validator|validators)/:address/delegations" render={() => <ValidatorDelegations address={this.props.validator.operator_address} tokens={this.props.validator.tokens} shares={this.props.validator.delegator_shares} />} />
-                                <Route path="/(validator|validators)/:address/transactions" render={() => <ValidatorTransactions validator={this.props.validator.operator_address} delegator={this.props.validator.delegator_address} limit={100}/>} />
+                                <Route path="/(validator|validators)/:address/transactions" render={() => <ValidatorTransactions history={this.props.history} validator={this.props.validator.operator_address} delegator={this.props.validator.delegator_address} limit={100}/>} />
                             </Switch>
                         </Col>
                     </Row>

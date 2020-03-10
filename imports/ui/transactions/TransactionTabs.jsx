@@ -10,6 +10,7 @@ const T = i18n.createComponent();
 export default class TransactionTabs extends Component{
     constructor(props){
         super(props);
+        console.log(this.props)
         this.state ={
             activeTab: 'tx-transfer',
             transferTxs: {},
@@ -107,7 +108,7 @@ export default class TransactionTabs extends Component{
                                         key={i}
                                         index={i}
                                         tx={tx}
-                                        
+                                        history={this.props.history}
                                         blockList
                                     />
                                 }):''}
@@ -129,6 +130,7 @@ export default class TransactionTabs extends Component{
                                         key={i}
                                         index={i}
                                         tx={tx}
+                                        history={this.props.history}
                                         blockList
                                     />
                                 }):''}
@@ -150,6 +152,7 @@ export default class TransactionTabs extends Component{
                                         key={i}
                                         index={i}
                                         tx={tx}
+                                        history={this.props.history}
                                         blockList
                                     />
                                 }):''}
@@ -171,6 +174,7 @@ export default class TransactionTabs extends Component{
                                         key={i}
                                         index={i}
                                         tx={tx}
+                                        history={this.props.history}
                                         blockList
                                     />
                                 }):''}
@@ -192,6 +196,7 @@ export default class TransactionTabs extends Component{
                                         key={i}
                                         index={i}
                                         tx={tx}
+                                        history={this.props.history}
                                         blockList
                                     />
                                 }):''}

@@ -15,6 +15,7 @@ import i18n from 'meteor/universe:i18n';
 import { MsgType } from '../components/MsgType.jsx';
 
 export const TransactionRow = (props) => {
+    console.log(props)
     let tx = props.tx;
     // console.log(tx);
     return <SentryBoundary>
