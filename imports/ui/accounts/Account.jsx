@@ -39,13 +39,15 @@ export default class AccountDetails extends Component{
     }
 
     getBalance(){
-        Meteor.call('coinStats.getStats', (error, result) => {
-            if (result){
-                this.setState({
-                    price: result.usd
-                })
-            }
-        });
+        // Meteor.call('coinStats.getStats', (error, result) => {
+        //     if (result){
+        //         this.setState({
+        //             price: result.usd
+        //         })
+        //     }
+        // });
+        this.setState({price: 0.035})
+
         Meteor.call('accounts.getBalance', this.props.match.params.address, (error, result) => {
             if (error){
                 console.warn(error);
@@ -226,7 +228,7 @@ export default class AccountDetails extends Component{
                                     <Row>
                                         <Col xs={4} className="label d-flex align-self-end"><div className="infinity" /><T>accounts.total</T></Col>
                                         <Col xs={8} className="value text-right">{new Coin(this.state.total).toString(4)}</Col>
-                                        <Col xs={12} className="dollar-value text-right text-secondary">~{numbro(this.state.total/Meteor.settings.public.stakingFraction*this.state.price).format("$0,0.0000a")} ({numbro(this.state.price).format("$0,0.00")}/{Meteor.settings.public.stakingDenom})</Col>
+                                        <Col xs={12} className="dollar-value text-right text-secondary">~{numbro(this.state.total/Meteor.settings.public.stakingFraction*this.state.price).format("$0,0.0000a")} ({numbro(this.state.price).format("$0,0.000")}/{Meteor.settings.public.stakingDenom})</Col>
                                     </Row>
                                 </Col>
                             </Row>
