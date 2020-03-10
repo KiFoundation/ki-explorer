@@ -8,7 +8,13 @@ This repository hosts `ki-explorer`, a block explorer for the KiChain.
 Currently exploring network **KiChain-t (Testnet)** Live on: **[blockchain.ki](https://blockchain.ki)**
 
 ## How to run The  Ki Explorer
+### Install meteor
+The Ki Explorer is a [Meteor](https://www.meteor.com/) application. To install the latest Meteor release, run the following command :
+```sh
+curl https://install.meteor.com/ | sh
+```
 
+### Set the correct settings
 1.  Open `settings.json`.
 2.  Update the RPC and LCD URLs.
 3.  Update Bech32 address prefixes.
