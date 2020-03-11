@@ -101,7 +101,7 @@ export default class Transactions extends Component{
                         background: "white", 
                         position: "fixed",
                         width: '85%',
-                        zIndex: 4
+                        zIndex: 10
                     },overlay: {
                         zIndex: 3
                     } }}

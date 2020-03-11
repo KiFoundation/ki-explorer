@@ -37,7 +37,8 @@ export default class ValidatorTransactions extends Component{
             return <Spinner color="primary" type="glow" />
         }
         else if (this.props.transactionsExist){
-            return <TransactionTabs 
+            return <TransactionTabs
+                history={this.props.history}
                 transferTxs={this.state.transferTxs}
                 stakingTxs={this.state.stakingTxs}
                 distributionTxs={this.state.distributionTxs}
