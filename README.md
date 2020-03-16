@@ -15,7 +15,7 @@ curl https://install.meteor.com/ | sh
 ```
 
 ### Set the correct settings
-1.  Open `settings.json`.
+1.  Open `default_settings.json`.
 2.  Update the RPC and LCD URLs.
 3.  Update Bech32 address prefixes.
 4.  Update genesis file location.
@@ -25,7 +25,7 @@ curl https://install.meteor.com/ | sh
 ```sh
 meteor npm install
 meteor update
-meteor --settings settings.json
+meteor --settings default_settings.json
 ```
 
 ### Run in production
