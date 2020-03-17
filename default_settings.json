@@ -18,7 +18,11 @@
         "stakingFraction": 1000000,
         "powerReduction": null,
         "gasPrice": 0.02,
-        "coingeckoId": "cosmos"
+        "coingeckoId": "cosmos",
+        "networks":[
+                        {"name": "KiChain-t","links": [{"name": "testnet","chain_id": "KiChain-t","url": "https://blockchain.ki"}]},
+                        {"name": "KiChain-t-0","links": [{"name": "devnet","chain_id": "KiChain-t-0","url": "http://localhost:4000"}]}
+                      ]
     },
     "genesisFile": "",
     "remote":{

@@ -73,36 +73,24 @@ export default class Header extends Component {
     }
 
     componentDidMount(){
-        let url = Meteor.settings.public.networks;
-        if (!url)
-            return
-        try{
-            HTTP.get(url, null, (error, result) => {
-                if (result.statusCode == 200){
-                    let networks = JSON.parse(result.content);
-                    if (networks.length > 0){
-                        this.setState({
-                            networks: <DropdownMenu>{
-                                networks.map((network, i) => {
-                                    return <span key={i}>
-                                        <DropdownItem header><img src={network.logo} /> {network.name}</DropdownItem>
-                                        {network.links.map((link, k) => {
-                                            return <DropdownItem key={k} disabled={link.chain_id == Meteor.settings.public.chainId}>
-                                                <a href={link.url} target="_blank">{link.chain_id} <Badge size="xs" color="secondary">{link.name}</Badge></a>
-                                            </DropdownItem>})}
-                                        {(i < networks.length - 1)?<DropdownItem divider />:''}
-                                    </span>
+        let networks = Meteor.settings.public.networks;
 
-                                })
-                            }</DropdownMenu>
-                        })
-                    }
-                }
-            })
-        }
-        catch(e){
-            console.warn(e);
-        }
+        this.setState({
+            networks: <DropdownMenu className="w-100">{
+                networks.map((network, i) => {
+                    return <span key={i}>
+
+                        {network.links.map((link, k) => {
+                            return <DropdownItem  key={k} disabled={link.chain_id == Meteor.settings.public.chainId}>
+                                <a href={link.url} target="_blank">{link.chain_id} <span style={{float:'right'}}><Badge size="xs" color="secondary">{link.name}</Badge></span></a>
+                            </DropdownItem>})}
+                        {(i < networks.length - 1)?<DropdownItem divider />:''}
+                    </span>
+
+                })
+            }</DropdownMenu>
+        })
+
     }
 
     signOut () {
@@ -172,14 +160,9 @@ export default class Header extends Component {
                         <NavItem className="ml-3 vertical-align">
                             <div className="ml-3">
                                 <Dropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen})} className="d-inline text-nowrap">
-                                    {/* <DropdownToggle className="network-name" caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle> */}
-                                    {/* {this.state.networks} */}
-                                    <DropdownToggle style={{boxShadow: 'none', border: '1px solid #eaeaea'}}>
-                                        <span className="font-800 dark-color mr-2 text-capitalize">Network</span> <span className="font-800 primary-color text-capitalize mr-4">Testnet</span> <i style={{opacity: 0.3}} className={`fas ${this.state.dropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+                                    <DropdownToggle style={{boxShadow: 'none', border: '1px solid #eaeaea'}} ><span className="font-800 dark-color mr-2 text-capitalize">Network</span> <span className="font-800 primary-color text-capitalize mr-4">{Meteor.settings.public.chainId}</span><i style={{opacity: 0.3}} className={`fas ${this.state.dropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
                                     </DropdownToggle>
-                                    <DropdownMenu className="w-100">
-                                        <DropdownItem>Testnet</DropdownItem>
-                                    </DropdownMenu>
+                                     {this.state.networks}
                                 </Dropdown>
                             </div>
                         </NavItem>
@@ -221,7 +204,7 @@ export default class Header extends Component {
                                             <i className="material-icons large">account_circle</i>
                                             <UncontrolledPopover className="d-none d-lg-block" trigger="legacy" placement="bottom" target="user-acconut-icon">
                                                 <PopoverBody>
-                                                    <div className="text-center"> 
+                                                    <div className="text-center">
                                                     <p><T>accounts.signInText</T></p>
                                                     <p><Link className="text-nowrap" to={`/account/${signedInAddress}`}>{signedInAddress}</Link></p>
                                                     <Button className="float-right" color="link" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i><span> <T>accounts.signOut</T></span></Button>
