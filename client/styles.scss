@@ -2,7 +2,10 @@
 @import "bootstrap";
 @import "materia/bootswatch";
 @import "./styles/variables";
+@import "./styles/mixins";
 @import "./styles/progress-bar";
+@import "./styles/button";
+
 
 body {
     font-size: inherit !important;
@@ -11,6 +14,7 @@ body {
 
 // Added
 #header-nav {
+
   a {
     color: $primary;
     i {
@@ -294,6 +298,23 @@ span#network-nav.network-name{
       margin-top: 5px;
     }
 
+    ul.nav {
+      .mobile-toggler {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+    
+      .btn {
+        padding: 0.4rem;
+      }
+      @include md {
+        .btn {
+          padding: 0.8rem 1rem;
+        }
+      }
+    }
+
     #user-acconut-icon {
       a {
         position: relative;
@@ -323,7 +344,10 @@ span#network-nav.network-name{
 
   a.navbar-brand .logo {
     max-height: 40px;
-    max-width: 150px;
+    max-width: 30vw;
+    @include md {
+      max-width: 150px;
+    }
   }
 
   #header-search {
@@ -332,12 +356,32 @@ span#network-nav.network-name{
   }
 
   #mobile-searchbar {
+    background-color: white;
+    box-shadow: inset 0 -1px 0 #ddd;
+    transition: box-shadow 0.2s;
+    border-radius: 5px;
+    margin-bottom: 3em;
+
     .form-control {
       height: auto;
-      padding: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .form-control:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, [type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus {
+      box-shadow: inset 0 -2px 0 $primary;
     }
 
-    margin-bottom: 0.5em;
+    .input-group-prepend {
+
+    }
+
+    .input-group-append {
+      
+      .btn {
+        box-shadow: inset 0 -1px 0 #ddd;
+      }
+    }
   }
 
   #footer {
@@ -613,6 +657,12 @@ span#network-nav.network-name{
       margin-bottom: 0.8em;
     }
   }
+  .address{
+    white-space: normal; 
+    @include md {
+      white-space: nowrap; 
+    }
+  }
 
   .address.copy {
     max-width: calc(100% - 1.2em);
@@ -823,8 +873,9 @@ span#network-nav.network-name{
 
     .mobile-menu li {
       width: 16.66%;
-
+      
       a {
+        color: $primary;
         text-align: center;
       }
     }

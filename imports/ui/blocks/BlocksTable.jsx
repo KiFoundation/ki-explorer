@@ -104,7 +104,7 @@ export default class BlocksTable extends Component {
                         </Button>
                     }
                 </Col>
-                { this.props.showChainStates && <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> }
+                { this.props.showChainStates && <Col xs={12} lg={9} className="text-md-right"><ChainStates /></Col> }
             </Row>
             <Switch>
                 <Route path="/blocks/:blockId" render={(props)=> <Sidebar 

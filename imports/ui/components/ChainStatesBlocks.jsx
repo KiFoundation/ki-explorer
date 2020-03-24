@@ -93,14 +93,14 @@ export default class ChainStatesBlocks extends Component{
     render(){
         return (
             <Row>
-                <Col>
+                <Col className="pr-0" xs={6} lg={3}>
                     <Card className="d-lg-inline-block w-100 bg-white card-header-custom">
                         <CardHeader className="bg-white list-border">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
-                                <Col xs={4} md="auto">
+                                <Col xs={12} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                            <span className="vertical-align justify-content-start" style={{fontSize: 13}}>
                                                 <T>chainStates.price</T>
                                                 <span className="rounded-icon ml-1" id="tooltip-price" style={{ height: 17, width: 17 }}>
                                                     <i class="fas fa-question" style={{fontSize: 8}} />
@@ -119,14 +119,14 @@ export default class ChainStatesBlocks extends Component{
                         </CardHeader>
                     </Card>
                 </Col>
-                <Col>
+                <Col className="pr-lg-0" xs={6} lg={3}>
                     <Card className="d-lg-inline-block w-100 bg-white card-header-custom">
                         <CardHeader className="bg-white list-border">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
-                                <Col xs={4} md="auto">
+                                <Col xs={12} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                            <span className="vertical-align justify-content-start" style={{fontSize: 13}}>
                                                 <T>chainStates.height</T>
                                                 <span className="rounded-icon ml-1" id="tooltip-height" style={{ height: 17, width: 17 }}>
                                                     <i class="fas fa-question" style={{fontSize: 8}}></i>
@@ -145,14 +145,14 @@ export default class ChainStatesBlocks extends Component{
                         </CardHeader>
                     </Card>
                 </Col>
-                <Col>
+                <Col className="pr-0" xs={6} lg={3}>
                     <Card className="d-lg-inline-block w-100 bg-white card-header-custom">
                         <CardHeader className="bg-white list-border">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
-                                <Col xs={4} md="auto">
+                                <Col xs={12} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                            <span className="vertical-align justify-content-start" style={{fontSize: 13}}>
                                                 <T>chainStates.bondedTokens</T>
                                                 <span className="rounded-icon ml-1" id="tooltip-bonded" style={{ height: 17, width: 17 }}>
                                                     <i class="fas fa-question" style={{fontSize: 8}} />
@@ -172,14 +172,14 @@ export default class ChainStatesBlocks extends Component{
                         </CardHeader>
                     </Card>
                 </Col>
-                <Col>
+                <Col xs={6} lg={3}>
                     <Card className="d-lg-inline-block w-100 bg-white card-header-custom">
                         <CardHeader className="bg-white list-border">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
-                                <Col xs={4} md="auto">
+                                <Col xs={12} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                            <span className="vertical-align" style={{fontSize: 13}}>
+                                            <span className="vertical-align justify-content-start"  style={{fontSize: 13}}>
                                                 <T>chainStates.inflation</T>
                                                 <span className="rounded-icon ml-1" id="tooltip-inflation" style={{ height: 17, width: 17 }}>
                                                     <i class="fas fa-question" style={{fontSize: 8}} />
