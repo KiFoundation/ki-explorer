@@ -7,3 +7,41 @@ $secondary-dark: #444;
 $body-bg-color: #f3f4f7;
 $body-color: $dark;
 $normal-shadow: 0 10px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+
+// Breakpoints
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Fluid responsive
+$min_width: $screen-md-min;
+$max_width: 2500px;
+
+$h1_min_font: 20px;
+$h1_max_font: 25px;
+
+$h2_min_font: 16px;
+$h2_max_font: 20px;
+
+$xl_text_min_font: 21px;
+$xl_text_max_font: 54px;
+
+$lg_text_min_font: 15px;
+$lg_text_max_font: 20px;
+
+$default_text_min_font: 14px;
+$default_text_max_font: 15px;
+
+$big_image_min_width: 65px;
+$big_image_max_width: 150px;
+
+$medium_image_min_width: 20px;
+$medium_image_max_width: 25px;
+
+$small_image_min_width: 15px;
+$small_image_max_width: 20px;

@@ -15,11 +15,11 @@ export default class Block extends Component {
         if (proposer){
             let moniker = (proposer.description&&proposer.description.moniker)?proposer.description.moniker:proposer.address;
             return <Row className="block-info bg-white my-2 py-3 list-border cursor-pointer block-info-custom" onClick={() => this.props?.history?.push("/blocks/"+this.props.block.height)}>
-                <Col xs={4} sm={2} className="text-truncate"><i className="fas fa-cube mr-2 light-color"></i> <span className="font-800 dark-color">{ this.props.block.hash}</span></Col>
-                <Col xs={{size:4, offset:8}} sm={{size:2, offset:0}}><i className="fas fa-database d-sm-none"></i> <Link className="primary-color font-800" to={"/blocks/"+this.props.block.height}>{numbro(this.props.block.height).format('0,0')}</Link></Col>
-                <Col xs={8}sm={3} md={2} lg={3} className="text-truncate"><Link className="primary-color font-800" to={"/validator/"+this.props.block.proposerAddress}><Avatar moniker={moniker} style={{backgroundColor: '#043bea'}} profileUrl={proposer.profile_url} address={this.props.block.proposerAddress} list={true} /> {moniker}</Link></Col>
-                <Col xs={4} sm={1} md={2}><i className="fas fa-sync d-sm-none"></i> {numbro(this.props.block.transNum).format('0,0')}</Col>
-                <Col xs={8} sm={4} lg={3}><i className="far fa-clock d-sm-none"></i><TimeStamp time={this.props.block.time}/></Col>
+                <Col xs={6} sm={2} className="text-truncate"><i className="fas fa-cube mr-2 light-color"></i> <span className="font-800 dark-color">{ this.props.block.hash}</span></Col>
+                <Col xs={6} sm={{size:2, offset:0}}><i className="fas fa-database d-sm-none mr-1"></i> <Link className="primary-color font-800" to={"/blocks/"+this.props.block.height}>{numbro(this.props.block.height).format('0,0')}</Link></Col>
+                <Col xs={6} sm={3} md={2} lg={3} className="text-truncate"><Link className="primary-color font-800" to={"/validator/"+this.props.block.proposerAddress}><Avatar moniker={moniker} style={{backgroundColor: '#043bea'}} profileUrl={proposer.profile_url} address={this.props.block.proposerAddress} list={true} /> {moniker}</Link></Col>
+                <Col xs={4} sm={1} md={2}><i className="fas fa-sync d-sm-none mr-1"></i> {numbro(this.props.block.transNum).format('0,0')}</Col>
+                <Col xs={{size: 6, offset: 6}} sm={{size: 4, offset: 0}} lg={{size: 3, offset: 0}}><i className="far fa-clock d-sm-none mr-2"></i><TimeStamp time={this.props.block.time}/></Col>
             </Row>
         }
         else{

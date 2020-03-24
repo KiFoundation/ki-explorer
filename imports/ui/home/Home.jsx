@@ -21,7 +21,7 @@ export default class Home extends Component{
         return <div id="home">
             <Helmet>
                 <title>KiChain Block Explorer</title>
-                <meta name="description" content="Cosmos is a decentralized network of independent parallel blockchains, each powered by BFT consensus algorithms like Tendermint consensus." />
+                <meta name="description" content="KiChain is a decentralized network of independent parallel blockchains, each powered by BFT consensus algorithms like Tendermint consensus." />
             </Helmet>
             <ChainStatesBlocks />
             {/* <Switch>

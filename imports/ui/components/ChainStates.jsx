@@ -75,12 +75,10 @@ export default class ChainStates extends Component{
             <CardHeader className="bg-white">
                 <Row className="text-nowrap chain-states-wrapper dark-color">
                     {/* Check une autre classe d'icons */}
-                    <Col xs={4} md="auto"><span><small className="vertical-align"><span className="rounded-icon"><i className="fas fa-dollar-sign"></i></span><b><T>chainStates.price</T>:</b> <span className="ml-2">${this.state.price}</span></small></span></Col>
-                    <Col xs={4} md="auto"><span><small className="vertical-align"><span className="rounded-icon"><i className="material-icons">height</i></span><b><T>chainStates.height</T>:</b> <span className="ml-2">{this.state.height}</span></small></span></Col>
-                    <Col xs={4} md="auto"><span><small className="vertical-align"><span className="rounded-icon"><i class="fas fa-chart-pie"></i></span><b><T>chainStates.bondedTokens</T>:</b> <span className="ml-2">{this.state.bondedTokens}</span></small></span></Col>
-                    <Col xs={4} md="auto"><span><small className="vertical-align"><span className="rounded-icon"><i className="material-icons">trending_up</i></span><b><T>chainStates.inflation</T>:</b> <span className="ml-2">{this.state.inflation}</span></small></span></Col>
-                    {/* <Col xs={8} md="auto"><small><span><T>chainStates.marketCap</T>:</span> <strong>{this.state.marketCap}</strong></small></Col> */}
-                    {/* <Col xs={8} md="auto"><small><span><T>chainStates.communityPool</T>:</span> <strong>{this.state.communityPool}</strong></small></Col> */}
+                    <Col xs={6} md="auto"><span><small className="vertical-align justify-content-md-center justify-content-start"><span className="rounded-icon"><i className="fas fa-dollar-sign"></i></span><b><T>chainStates.price</T>:</b> <span className="ml-1 ml-md-2">${this.state.price}</span></small></span></Col>
+                    <Col xs={6} md="auto"><span><small className="vertical-align justify-content-md-center justify-content-start"><span className="rounded-icon"><i className="material-icons">height</i></span><b><T>chainStates.height</T>:</b> <span className="ml-1 ml-md-2">{this.state.height}</span></small></span></Col>
+                    <Col xs={6} md="auto" className="mt-2 mt-md-0"><span><small className="vertical-align justify-content-md-center justify-content-start"><span className="rounded-icon"><i class="fas fa-chart-pie"></i></span><b><T>chainStates.bondedTokens</T>:</b> <span className="ml-1 ml-md-2">{this.state.bondedTokens}</span></small></span></Col>
+                    <Col xs={6} md="auto" className="mt-2 mt-md-0"><span><small className="vertical-align justify-content-md-center justify-content-start"><span className="rounded-icon"><i className="material-icons">trending_up</i></span><b><T>chainStates.inflation</T>:</b> <span className="ml-1 ml-md-2">{this.state.inflation}</span></small></span></Col>
                 </Row>
             </CardHeader>
         </Card>

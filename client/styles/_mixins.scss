@@ -1,0 +1,91 @@
+// Small devices
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+}
+
+// Medium devices
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+
+// Large devices
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+}
+
+// Extra large devices
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+
+  @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+  }
+
+  @mixin fluid-image-type($min-vw, $max-vw, $min-image-size, $max-image-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-image-size);
+    $u4: unit($max-image-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        width: $min-image-size;
+        @media screen and (min-width: $min-vw) {
+          width: calc(#{$min-image-size} + #{strip-unit($max-image-size - $min-image-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          width: $max-image-size;
+        }
+      }
+    }
+  }
+
+  @mixin fluid-icon-type($min-vw, $max-vw, $min-image-size, $max-image-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-image-size);
+    $u4: unit($max-image-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        width: $min-image-size;
+        @media screen and (min-width: $min-vw) {
+          width: calc(#{$min-image-size} + #{strip-unit($max-image-size - $min-image-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+          height: calc(#{$min-image-size} + #{strip-unit($max-image-size - $min-image-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          width: $max-image-size;
+          height: $max-image-size;
+        }
+      }
+    }
+  }
+
