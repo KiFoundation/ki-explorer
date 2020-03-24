@@ -871,18 +871,24 @@ span#network-nav.network-name{
       margin: 0.4rem 0.8rem;
     }
 
-    .mobile-menu li {
-      width: 16.66%;
-      
+    .mobile-menu {
       a {
+        color: lighten(gray, 40%);
+        i {
+          vertical-align: middle;
+        }
+      }
+      a.mobile-menu-active {
         color: $primary;
-        text-align: center;
       }
     }
 
     div.validator-list div.validator-info {
       img.moniker-avatar-list {
-        height: 48px;
+        height: 24px;
+        @include lg {
+          height: 48px;
+        }
         float: left;
       }
 
@@ -892,9 +898,15 @@ span#network-nav.network-name{
           margin-left: 3px;
           max-width: 80%;
         }
+        i.material-icons {
+          vertical-align: sub;
+        }
+        i.material-icons + span {
+          transform: translate(0);
+        }
 
         &.voting-power, &.status {
-          margin-top: -25px;
+          // margin-top: -25px;
         }
       }
     }
