@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-    Navbar,
-    Nav,
-    NavItem,
-    NavLink } from 'reactstrap';
-
-import { Link } from 'react-router-dom';
-import moment from 'moment';
+import { Navbar} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
@@ -28,8 +22,12 @@ export default class Footer extends React.Component {
                     </Nav>
                 </Navbar> */}
                 <Navbar color="light" light fixed="bottom" className="d-block d-md-none mobile-menu">
-                    <Nav>
-                        <NavItem>
+                    <div className="d-flex justify-content-around align-items-center w-100">
+                            <NavLink to="/" exact activeClassName="mobile-menu-active"><i className="material-icons" style={{width: 24}}>home</i></NavLink>
+                            <NavLink to="/validators" activeClassName="mobile-menu-active"><i className="material-icons" style={{width: 24}}>perm_contact_calendar</i></NavLink>
+                            <NavLink to="/blocks" activeClassName="mobile-menu-active"><i className="fas fa-cube fa-lg"></i></NavLink>
+                            <NavLink to="/transactions" activeClassName="mobile-menu-active"><i className="material-icons" style={{width: 24}}>sync</i></NavLink>
+                        {/* <NavItem>
                             <NavLink tag={Link} to="/"><i className="material-icons">home</i></NavLink>
                         </NavItem>
                         <NavItem>
@@ -40,14 +38,14 @@ export default class Footer extends React.Component {
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to="/transactions"><i className="fas fa-sync"></i></NavLink>
-                        </NavItem>
-                        <NavItem>
+                        </NavItem> */}
+                        {/* <NavItem>
                             <NavLink tag={Link} to="/proposals"><i className="material-icons">insert_drive_file</i></NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to="/voting-power-distribution"><i className="material-icons">power_on</i></NavLink>
-                        </NavItem>
-                    </Nav>
+                        </NavItem> */}
+                    </div>
                 </Navbar>
             </div>  
         );
