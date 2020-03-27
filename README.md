@@ -41,3 +41,6 @@ It will create a packaged Node JS tarball at `../output`. Deploy that packaged N
 ## Disclaimer
 
 The Ki Explorer is based on the [Big Dipper](https://github.com/forbole/big-dipper) project by [Forbole](https://github.com/forbole).
+
+## Security
+If you discover a security vulnerability in this project, please report it to security@foundation.ki. We will promptly address all security vulnerabilities.
