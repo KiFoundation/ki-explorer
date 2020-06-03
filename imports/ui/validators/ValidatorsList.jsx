@@ -33,7 +33,7 @@ export default class Validators extends Component{
             selfDelDir: 1,
             statusDir: 1,
             jailedDir: 1,
-            priority: PriorityEnum.moniker.code
+            priority: PriorityEnum.votingPower.code
         }
         if (props.location.search) {
             let queryParams = qs.parse(props.location.search.substring(1));
@@ -109,10 +109,10 @@ export default class Validators extends Component{
                         <Col className="vertical-middle moniker" md={2} onClick={(e) => this.toggleDir('moniker',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>validators.moniker</T></span> {renderToggleIcon(this.state.monikerDir)} </Col>
                         <Col className="vertical-middle voting-power" md={3} lg={2} onClick={(e) => this.toggleDir('votingPower',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>common.votingPower</T></span> {renderToggleIcon(this.state.votingPowerDir)} </Col>
                         <Col className="vertical-middle self-delegation" md={2} onClick={(e) => this.toggleDir('selfDel',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>validators.selfPercentage</T></span> {renderToggleIcon(this.state.selfDelDir==1)} </Col>
-                        
+
                         {(!this.props.inactive)?<Col className="vertical-middle commission" md={2} onClick={(e) => this.toggleDir('commission',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>validators.commission</T></span> {renderToggleIcon(this.state.commissionDir==1)}</Col>:''}
                         {(!this.props.inactive)?<Col className="vertical-middle uptime" md={1} onClick={(e) => this.toggleDir('uptime',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>validators.uptime</T> </span> {renderToggleIcon(this.state.uptimeDir==1)}</Col>:''}
-                        
+
                         {(this.props.inactive)?<Col className="vertical-middle last-seen d-none d-lg-inline-block" md={2}><span className="text-uppercase dark-color font-500 list-title"><T>validators.lastSeen</T> (UTC)</span></Col>:''}
                         {(this.props.inactive)?<Col className="vertical-middle bond-status" md={2} onClick={(e) => this.toggleDir('status',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>validators.status</T></span> {renderToggleIcon(this.state.statusDir)} </Col>:''}
                         {(this.props.inactive)?<Col className="vertical-middle jail-status" md={1} onClick={(e) => this.toggleDir('jailed',e)}><span className="d-none d-md-inline-block text-uppercase dark-color font-500 list-title"><T>validators.jailed</T></span> {renderToggleIcon(this.state.jailedDir)} </Col>:''}

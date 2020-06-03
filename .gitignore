@@ -3,3 +3,6 @@
 node_modules
 settings.json
 default_settings.json
+settings-t-1.json
+settings-t-0.json
+._*
