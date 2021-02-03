@@ -39,14 +39,13 @@ export default class AccountDetails extends Component{
     }
 
     getBalance(){
-        // Meteor.call('coinStats.getStats', (error, result) => {
-        //     if (result){
-        //         this.setState({
-        //             price: result.usd
-        //         })
-        //     }
-        // });
-        this.setState({price: 0.035})
+        Meteor.call('coinStats.getStats', (error, result) => {
+            if (result){
+                this.setState({
+                    price: result.usd
+                })
+            }
+        });
 
         Meteor.call('accounts.getBalance', this.props.match.params.address, (error, result) => {
             if (error){
@@ -57,7 +56,6 @@ export default class AccountDetails extends Component{
             }
 
             if (result){
-                // console.log(result);
                 if (result.available){
                     const amount = result.available.amount || '0';
                     this.setState({

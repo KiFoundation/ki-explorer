@@ -18,7 +18,6 @@ export default class ChainStatesBlocks extends Component{
                 data.height = this.props?.chainStates?.height || null;
                 // data.bondedTokens = this.props?.chainStates?.bondedTokens || null;
                 data.bondedTokens = this.props?.chainStates?.bondedTokens || null;
-                data.price = 0.035;
             }
             if (this.props.chainStates.communityPool){
                 data.communityPool = this.props.chainStates.communityPool.map((pool,i) => {
@@ -28,7 +27,7 @@ export default class ChainStatesBlocks extends Component{
             }
 
             if (this.props.coinStats.usd){
-                // data.price = this.props.coinStats.usd,
+                data.price = this.props.coinStats.usd,
                 data.marketCap = numbro(this.props.coinStats.usd_market_cap).format("$0,0.00")
             }
             this.state = data;
@@ -40,7 +39,6 @@ export default class ChainStatesBlocks extends Component{
             this.toggleInflation = this.toggleInflation.bind(this)
 
             this.state = {
-                price: "0.035",
                 marketCap: "-",
                 inflation: 0,
                 communityPool: 0,
@@ -83,7 +81,7 @@ export default class ChainStatesBlocks extends Component{
         if (this.props.coinStats != prevProps.coinStats){
             if (this.props.coinStats.usd){
                 this.setState({
-                    // price: this.props.coinStats.usd,
+                    price: this.props.coinStats.usd,
                     marketCap: numbro(this.props.coinStats.usd_market_cap).format("$0,0.00")
                 })
             }

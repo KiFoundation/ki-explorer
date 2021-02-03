@@ -26,7 +26,7 @@ common:
     retry: 'Retry'
     rewards: 'Rewards'
     delegations: 'Delegations'
-    unbounding: 'Unbounding'
+    unbounding: 'Unbonding'
     seeMore: 'See more'
 navbar:
     siteName: 'KiChain'
@@ -55,9 +55,9 @@ chainStates:
     tooltipInflation: 'Amount of newly created tokens'
     communityPool: 'Community Pool'
     height: 'Height'
-    tooltipHeight: 'Number of last block'
+    tooltipHeight: 'Current block height'
     bondedTokens: 'Bonded'
-    tooltipBonded: 'Number of staked / locked tokens'
+    tooltipBonded: 'Number of staked tokens / total supply'
 chainStatus:
     startMessage: 'The chain is going to start in'
     stopWarning: 'The chain appears to be stopped for <em>{$time}</em>! Feed me with new blocks 😭!'
