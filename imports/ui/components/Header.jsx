@@ -74,24 +74,44 @@ export default class Header extends Component {
     }
 
     componentDidMount(){
-        let networks = Meteor.settings.public.networks;
+        const url = Meteor.settings.public.networks
+        if (url){
+            try{
+                HTTP.get(url, null, (error, result) => {
+                    if (result.statusCode == 200){
+                        let networks = JSON.parse(result.content);
+                        if (networks.length > 0){
+                            this.setState({
+                                networks: <DropdownMenu>{
+                                    networks.map((network, i) => {
+                                        return <span key={i}>
+                                            <DropdownItem header><img src={network.logo} /> {network.name}</DropdownItem>
+                                            {network.links.map((link, k) => {
+                                                return <DropdownItem key={k} disabled={link.chain_id == Meteor.settings.public.chainId}>
+                                                    <a href={link.url} target="_blank">{link.chain_id} <Badge size="xs" color="secondary">{link.name}</Badge></a>
+                                                </DropdownItem>})}
+                                            {(i < networks.length - 1)?<DropdownItem divider />:''}
+                                        </span>
 
-        this.setState({
-            networks: <DropdownMenu className="w-100">{
-                networks.map((network, i) => {
-                    return <span key={i}>
-
-                        {network.links.map((link, k) => {
-                            return <DropdownItem  key={k} disabled={link.chain_id == Meteor.settings.public.chainId}>
-                                <a href={link.url} target="_blank">{link.chain_id} <span style={{float:'right'}}><Badge size="xs" color="secondary">{link.name}</Badge></span></a>
-                            </DropdownItem>})}
-                        {(i < networks.length - 1)?<DropdownItem divider />:''}
-                    </span>
-
+                                    })
+                                }</DropdownMenu>
+                            })
+                        }
+                    }
                 })
-            }</DropdownMenu>
-        })
+            }
+            catch(e){
+                console.warn(e);
+            }
+        }
 
+        Meteor.call('getVersion', (error, result) => {
+            if (result) {
+                this.setState({
+                    version:result
+                })
+            }
+        })
     }
 
     signOut () {
@@ -188,46 +208,11 @@ export default class Header extends Component {
                             <NavItem>
                                 <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/transactions"><i className="material-icons mr-2">swap_vert</i><span className="link-span font-500"><T>navbar.transactions</T></span></NavLink>
                             </NavItem>
-                            {/* <NavItem>
-                                <NavLink className="text-uppercase" tag={Link} to="/proposals"><T>navbar.proposals</T></NavLink>
+                            {/*<NavItem>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/proposals"><i className="material-icons mr-2">how_to_vote</i><span className="link-span font-500"><T>navbar.proposals</T></span></NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink className="text-uppercase" tag={Link} to="/voting-power-distribution"><T>navbar.votingPower</T></NavLink>
-                            </NavItem> */}
-                            {/* <NavItem id="user-acconut-icon">
-                                {!signedInAddress?<Button className="sign-in-btn" color="link" size="lg" onClick={() => {this.setState({isSignInOpen: true})}}><i className="material-icons">vpn_key</i></Button>:
-                                    <span>
-                                        <span className="d-lg-none">
-                                            <i className="material-icons large d-inline">account_circle</i>
-                                            <Link to={`/account/${signedInAddress}`}> {signedInAddress}</Link>
-                                            <Button className="float-right" color="link" size="sm" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i></Button>
-                                        </span>
-                                        <span className="d-none d-lg-block">
-                                            <i className="material-icons large">account_circle</i>
-                                            <UncontrolledPopover className="d-none d-lg-block" trigger="legacy" placement="bottom" target="user-acconut-icon">
-                                                <PopoverBody>
-                                                    <div className="text-center">
-                                                    <p><T>accounts.signInText</T></p>
-                                                    <p><Link className="text-nowrap" to={`/account/${signedInAddress}`}>{signedInAddress}</Link></p>
-                                                    <Button className="float-right" color="link" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i><span> <T>accounts.signOut</T></span></Button>
-                                                </div>
-                                                </PopoverBody>
-                                            </UncontrolledPopover>
-                                        </span>
-                                    </span>}
-                                <LedgerModal isOpen={this.state.isSignInOpen} toggle={this.toggleSignIn} refreshApp={this.props.refreshApp} handleLoginConfirmed={this.shouldLogin()?this.handleLoginConfirmed:null}/>
-                            </NavItem> */}
-                            {/* <NavItem>
-                                <UncontrolledDropdown inNavbar>
-                                    <DropdownToggle nav caret>
-                                        <T>navbar.lang</T>
-                                    </DropdownToggle>
-                                    <DropdownMenu right>
-                                        <DropdownItem onClick={(e) => this.handleLanguageSwitch('en-US', e)}><T>navbar.english</T></DropdownItem>
-                                        <DropdownItem onClick={(e) => this.handleLanguageSwitch('zh-Hant', e)}><T>navbar.chinese</T></DropdownItem>
-                                        <DropdownItem onClick={(e) => this.handleLanguageSwitch('zh-Hans', e)}><T>navbar.simChinese</T></DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
+                             <NavItem>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/voting-power-distribution"><i className="material-icons mr-2">swap_vert</i><span className="link-span font-500"><T>navbar.votingPower</T></span></NavLink>
                             </NavItem> */}
                         </Nav>
                     </Collapse>
@@ -236,3 +221,4 @@ export default class Header extends Component {
         );
     }
 }
+

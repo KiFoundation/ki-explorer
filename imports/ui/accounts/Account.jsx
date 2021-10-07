@@ -17,17 +17,28 @@ const T = i18n.createComponent();
 export default class AccountDetails extends Component{
     constructor(props){
         super(props);
+        const defaultCoin = Meteor.settings.public.coins.map(coin => {
+            return {
+                denom: coin.denom,
+                amount: 0
+            }
+        })
         this.state = {
-            address: props.match.params.address,
-            loading: true,
-            accountExists: false,
-            available: 0,
-            delegated: 0,
-            unbonding: 0,
-            rewards: 0,
-            total: 0,
-            price: 0,
-            user: localStorage.getItem(CURRENTUSERADDR)
+          address: props.match.params.address,
+          loading: true,
+          accountExists: false,
+          available: [defaultCoin],
+          delegated: 0,
+          unbonding: 0,
+          rewards: [defaultCoin],
+          reward: [defaultCoin],
+          total: [defaultCoin],
+          price: 0,
+          user: localStorage.getItem(CURRENTUSERADDR),
+          commission: [defaultCoin],
+          denom: '',
+          rewardsForEachDel: {defaultCoin},
+          rewardDenomType: [defaultCoin],
         }
     }
 
@@ -60,6 +71,7 @@ export default class AccountDetails extends Component{
                     const amount = result.available.amount || '0';
                     this.setState({
                         available: parseFloat(amount),
+                        denom: Coin.StakingCoin.denom,
                         total: parseFloat(this.state.total)+parseFloat(amount)
                     })
                 }
@@ -261,3 +273,4 @@ export default class AccountDetails extends Component{
         }
     }
 }
+

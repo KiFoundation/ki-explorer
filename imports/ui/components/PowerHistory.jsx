@@ -25,7 +25,7 @@ export default class PowerHistory extends React.Component {
                 this.setState({
                     tx: result.map((msg, i) => <CardFooter key={i} className="text-secondary"><Row>
                         <Col xs={12} sm={8}>
-                            {(msg.tx.value.msg && msg.tx.value.msg.length > 0)?msg.tx.value.msg.map((m, j) => {
+                            {(msg.tx.body.messages && msg.tx.body.messages.length > 0)?msg.tx.body.messages.map((m, j) => {
                                 switch (m.type){
                                 case "cosmos-sdk/MsgBeginRedelegate":
                                     return <Row key={j}>
@@ -105,7 +105,7 @@ export default class PowerHistory extends React.Component {
                             <Row>
                                 <Col xs={12}>
                                     <Row>
-                                        {(msg.tx.value.msg && msg.tx.value.msg.length > 0)?msg.tx.value.msg.map((m,j) => {
+                                        {(msg.tx.body.messages && msg.tx.body.messages.length > 0)?msg.tx.body.messages.map((m,j) => {
                                             switch (m.type){
                                             case "cosmos-sdk/MsgBeginRedelegate":
                                                 return <Col key={j}><Badge color="success"><T>messageTypes.redelegate</T></Badge></Col>;
@@ -126,7 +126,8 @@ export default class PowerHistory extends React.Component {
                                     </Row>
                                     <Row>
                                         <Col xs={4} sm={6}><T>transactions.fee</T></Col>
-                                        <Col xs={8} sm={6}>{(msg.tx.value.fee.amount&& msg.tx.value.fee.amount.length>0)?msg.tx.value.fee.amount.map((amount,i)=> new Coin(amount.amount).toString()).join(' ,'):'0'}</Col>
+                                        <Col xs={8} sm={6}>{(msg.tx.auth_info.fee.amount&& msg.tx.auth_info.fee.amount.length>0)?msg.tx.auth_info.fee.amount.map((amount,i)=> new Coin(amount.amount).toString()).join(' ,'):'0'}</Col>
+
                                     </Row>
                                 </Col>
                             </Row>

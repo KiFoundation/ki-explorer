@@ -57,21 +57,21 @@ export default class Transaction extends Component{
                                     {tx.block()?<span> <TimeStamp time={tx.block().time}/></span>:null}
                                 </Col>
                                 <Col md={4} className="label"><T>transactions.fee</T></Col>
-                                <Col md={8} className="value">{(tx.tx.value.fee.amount.length > 0)?tx.tx.value.fee.amount.map((fee,i) => {
+                                <Col md={8} className="value">{(tx.tx.auth_info.fee.amount.length > 0)?tx.tx.auth_info.fee.amount.map((fee,i) => {
                                     return <span className="text-nowrap" key={i}>{new Coin(fee.amount).toString()}</span>
                                 }):<span>No fee</span>}</Col>
                                 <Col md={4} className="label"><T>transactions.gasUsedWanted</T></Col>
-                                <Col md={8} className="value">{numbro(tx.gas_used).format("0,0")} / {numbro(tx.gas_wanted).format("0,0")}</Col>
-                                <Col md={4} className="label"><T>transactions.memo</T></Col>
-                                <Col md={8} className="value"><Markdown markup={ tx.tx.value.memo } /></Col>
+                            	<Col md={8} className="value">{numbro(tx.tx_response.gas_used).format("0,0")} / {numbro(tx.tx_response.gas_wanted).format("0,0")}</Col>    
+			    	<Col md={4} className="label"><T>transactions.memo</T></Col>
+                                <Col md={8} className="value"><Markdown markup={ tx.tx.body.memo  } /></Col>
                             </Row>
                         </CardBody>
                     </Card>
                     <Card>
-                        <div className="card-header"><T>transactions.activities</T></div>
+                       <div className="card-header"><T>transactions.activities</T></div>
                     </Card>
-                    {(tx.tx.value.msg && tx.tx.value.msg.length >0)?tx.tx.value.msg.map((msg,i) => {
-                        return <Card body key={i}><Activities msg={msg} invalid={(!!tx.code)} events={tx.events} /></Card>
+                    {(tx.tx.body.messages && tx.tx.body.messages.length >0)?tx.tx.body.messages.map((msg,i) => {
+                        return <Card body key={i}><Activities msg={msg} invalid={(!!tx.code)} events={(tx.logs&&tx.logs[i])?tx.logs[i].events:null} /></Card>
                     }):''}
                 </Container>
             }

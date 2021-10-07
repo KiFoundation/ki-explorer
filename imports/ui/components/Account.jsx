@@ -43,7 +43,6 @@ export default class Account extends Component{
         let address = this.props.address;
         Meteor.call('Transactions.findUser', this.props.address, this.getFields(), (error, result) => {
             if (result){
-                // console.log(result);
                 this.setState({
                     address: `/validator/${result.address}`,
                     moniker: result.description?result.description.moniker:result.operator_address,

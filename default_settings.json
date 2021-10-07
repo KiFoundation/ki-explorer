@@ -1,42 +1,61 @@
 {
     "public":{
-        "chainName": "KiChain-t",
-        "chainId": "KiChain-t",
+        "chainName": "Cosmos",
+        "chainId": "{Chain ID}",
         "gtm": "{Add your Google Tag Manager ID here}",
         "slashingWindow": 10000,
         "uptimeWindow": 250,
         "initialPageSize": 30,
-        "bech32PrefixAccAddr": "tki",
-        "bech32PrefixAccPub": "tkipub",
-        "bech32PrefixValAddr": "tkivaloper",
-        "bech32PrefixValPub": "tkivaloperpub",
-        "bech32PrefixConsAddr": "tkivalcons",
-        "bech32PrefixConsPub": "tkivalconspub",
-        "stakingDenom": "tki",
-        "stakingDenomPlural": null,
-        "mintingDenom": "tki",
-        "stakingFraction": 1000000,
-        "powerReduction": null,
-        "gasPrice": 0.02,
-        "coingeckoId": "cosmos",
-        "networks":[
-                        {"name": "KiChain-t","links": [{"name": "testnet","chain_id": "KiChain-t","url": "https://blockchain.ki"}]},
-                        {"name": "KiChain-t-0","links": [{"name": "devnet","chain_id": "KiChain-t-0","url": "http://localhost:4000"}]}
-                      ]
+        "secp256k1": false,
+        "bech32PrefixAccAddr": "cosmos",
+        "bech32PrefixAccPub": "cosmospub",
+        "bech32PrefixValAddr": "cosmosvaloper",
+        "bech32PrefixValPub": "cosmosvaloperpub",
+        "bech32PrefixConsAddr": "cosmosvalcons",
+        "bech32PrefixConsPub": "cosmosvalconspub",
+        "bondDenom": "uatom",
+        "powerReduction": 1000000,
+        "coins": [
+            {
+                "denom": "uatom",
+                "displayName": "ATOM",
+                "fraction": 1000000
+            }, 
+            {
+                "denom": "umuon",
+                "displayName": "MUON",
+                "fraction": 1000000
+            } 
+        ],
+        "ledger":{
+            "coinType": 118,
+            "appName": "Cosmos",
+            "appVersion": "2.16.0",
+            "gasPrice": 0.02
+        },
+        "modules": {
+            "bank": true,
+            "supply": true,
+            "minting": false,
+            "gov": true,
+            "distribution": false
+        },
+        "coingeckoId": "cosmos"
     },
-    "genesisFile": "",
     "remote":{
-        "rpc":"",
-        "lcd":""
+        "rpc":"https://rpc.stargate.forbole.com:443",
+        "api":"https://api.stargate.forbole.com:443"
     },
     "debug": {
-        "startTimer": true,
-        "readGenesis": true
+        "startTimer": true
     },
     "params":{
         "startHeight": 0,
         "defaultBlockTime": 5000,
+        "validatorUpdateWindow": 300,
         "blockInterval": 15000,
+        "transactionsInterval": 18000,
+        "keybaseFetchingInterval": 18000000,
         "consensusInterval": 1000,
         "statusInterval":7500,
         "signingInfoInterval": 1800000,
@@ -45,3 +64,5 @@
         "delegationInterval": 900000
     }
 }
+
+

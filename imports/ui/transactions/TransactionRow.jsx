@@ -22,13 +22,13 @@ export const TransactionRow = (props) => {
             <Col xs={(!props.blockList)?{size:6}:{size:12}} md={(!props.blockList)?{size:3}:{size:7}} lg={(!props.blockList)?{size:1}:{size:2}} className="text-truncate"><i className="fas fa-hashtag light-color"></i> <Link className="dark-color font-800" to={"/transactions/"+tx.txhash}>{tx.txhash}</Link></Col>
 
             <Col xs={5} md={3} lg={2} className="text-nowrap">
-                {(tx.tx.value.msg && tx.tx.value.msg.length >0)?[tx.tx.value.msg[0]].map((msg,i) => {
-                    return <MsgType type={msg.type} num={tx.tx.value.msg.length}/> 
+                {(tx.tx.body.messages && tx.tx.body.messages.length >0)?tx.tx.body.messages.map((msg,i) => {
+                    return <MsgType key={i} type={msg["@type"]} num={tx.tx.body.messages.length}/>
                 }):''}
             </Col>
 
             <Col xs={5} md={3} lg={2} className="text-nowrap">
-                {(tx.tx.value.msg && tx.tx.value.msg.length >0)?[tx.tx.value.msg[0]].map(msg => {
+                {(tx.tx.body.messages && tx.tx.body.messages.length >0)?tx.tx.body.messages.map(msg => {
                     return <Amounts msg={msg} hash={tx.txhash} invalid={(!!tx.code)}/>
                 }):''}
             </Col>
@@ -39,7 +39,7 @@ export const TransactionRow = (props) => {
             <Col xs={(!props.blockList)?2:4} md={1}>{(!tx.code)?<TxIcon valid />:<TxIcon />}</Col>
 
             <Col xs={(!props.blockList)?6:8} md={(!props.blockList)?9:4} lg={2} className="fee"><i className="material-icons d-lg-none">monetization_on</i>
-                {(tx.tx.value.fee.amount.length > 0)?tx.tx.value.fee.amount.map((fee,i) => {
+                {(tx.tx.auth_info.fee.amount.length > 0)?tx.tx.auth_info.fee.amount.map((fee,i) => {
                     return <span className="text-nowrap" key={i}>{new Coin(fee.amount).toString()}</span>
                 }):<span>No fee</span>}
             </Col>
@@ -57,3 +57,4 @@ export const TransactionRow = (props) => {
         </Row>
     </SentryBoundary>
 }
+

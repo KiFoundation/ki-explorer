@@ -11,7 +11,6 @@ const T = i18n.createComponent();
 
 const ProposalList = (props) => {
     return <div>
-        <p className="lead"><T>proposals.listOfProposals</T></p>
         <Row>
             <Col md={12}>
                 <List {...props}/>

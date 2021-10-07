@@ -17,9 +17,11 @@ export default class AccountDelegations extends Component{
         return (
             <Container fluid>
                 <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}}>
-                    <Col xs={6} md={4}><span className="text-uppercase dark-color font-500"><T>accounts.validators</T></span></Col>
-                    <Col xs={3} md={4}><span className="text-uppercase dark-color font-500"><T>accounts.shares</T></span></Col>
-                    <Col xs={3} md={4}><span className="text-uppercase dark-color font-500"><T>{Coin.StakingDenomPlural}</T></span></Col>
+                    <Col xs={6} md={4}><span className="text-uppercase dark-color font-500"><T>accounts.validators</T></span></Col>                  
+                    <Col xs={3} md={4}><span className="text-uppercase dark-color font-500"><T>{Coin.StakingCoin.displayName}</T></span></Col>
+                    <Col xs={3} md={3}><span className="text-uppercase dark-color font-500"><T>common.rewards</T></span></Col>
+                 
+               
                 </Row>
                 {this.props.delegations.sort((b, a) => (a.balance - b.balance)).map((d, i) => {
                     return <Row key={i} className="delegation-info bg-white my-2 py-3 list-border">

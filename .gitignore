@@ -1,8 +1,8 @@
-
 .DS_Store
-node_modules
+node_modules/
+.vscode
 settings.json
-default_settings.json
-settings-t-1.json
-settings-t-0.json
-._*
+settings.*.json
+output/
+xOLD/*
+imports/ui1/*
