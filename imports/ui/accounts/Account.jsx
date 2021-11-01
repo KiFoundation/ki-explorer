@@ -17,28 +17,17 @@ const T = i18n.createComponent();
 export default class AccountDetails extends Component{
     constructor(props){
         super(props);
-        const defaultCoin = Meteor.settings.public.coins.map(coin => {
-            return {
-                denom: coin.denom,
-                amount: 0
-            }
-        })
         this.state = {
           address: props.match.params.address,
           loading: true,
           accountExists: false,
-          available: [defaultCoin],
+          available: 0,
           delegated: 0,
           unbonding: 0,
-          rewards: [defaultCoin],
-          reward: [defaultCoin],
-          total: [defaultCoin],
+          rewards: 0,
+          total: 0,
           price: 0,
           user: localStorage.getItem(CURRENTUSERADDR),
-          commission: [defaultCoin],
-          denom: '',
-          rewardsForEachDel: {defaultCoin},
-          rewardDenomType: [defaultCoin],
         }
     }
 
@@ -101,20 +90,21 @@ export default class AccountDetails extends Component{
 
                 if (result.rewards && result.rewards.length > 0){
                     result.rewards.forEach((reward, i) => {
+                        console.log(this.state);
                         this.setState({
-                            rewards: this.state.rewards+parseFloat(reward.amount),
-                            total: this.state.total+parseFloat(reward.amount)
+                            rewards: this.state.rewards+(parseFloat(reward.amount) || 0 ),
+                            total: this.state.total+(parseFloat(reward.amount) || 0 )
                         })
                     }, this)
                 }
 
-                if (result.commission){
-                    this.setState({
-                        operator_address: result.operator_address,
-                        commission: parseFloat(result.commission.amount),
-                        total: parseFloat(this.state.total)+parseFloat(result.commission.amount)
-                    })
-                }
+                // if (result.commission){
+                //     this.setState({
+                //         operator_address: result.operator_address,
+                //         commission: parseFloat(result.commission.amount),
+                //         total: parseFloat(this.state.total)+parseFloat(result.commission.amount)
+                //     })
+                // }
 
 
                 this.setState({
@@ -241,7 +231,7 @@ export default class AccountDetails extends Component{
                                     <Row>
                                         <Col xs={4} className="label d-flex align-self-end"><div className="infinity" /><T>accounts.total</T></Col>
                                         <Col xs={8} className="value text-right">{new Coin(this.state.total).toString(4)}</Col>
-                                        <Col xs={12} className="dollar-value text-right text-secondary">~{numbro(this.state.total/Meteor.settings.public.stakingFraction*this.state.price).format("$0,0.0000a")} ({numbro(this.state.price).format("$0,0.000")}/{Meteor.settings.public.stakingDenom})</Col>
+                                        <Col xs={12} className="dollar-value text-right text-secondary">~{numbro(this.state.total/Coin.StakingCoin.fraction*this.state.price).format("$0,0.0000a")} ({numbro(this.state.price).format("$0,0.000")}/{Meteor.settings.public.stakingDenom})</Col>
                                     </Row>
                                 </Col>
                             </Row>
@@ -273,4 +263,3 @@ export default class AccountDetails extends Component{
         }
     }
 }
-

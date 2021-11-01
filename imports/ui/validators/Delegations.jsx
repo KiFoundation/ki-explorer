@@ -29,9 +29,12 @@ export default class ValidatorDelegations extends Component{
                 // Delegations.remove({});
                 let Delegations = new Mongo.Collection(null);
                 result.forEach((delegation,i) => {
-                    Delegations.insert(delegation);
+                  console.log(delegation);
+                    Delegations.insert(delegation.delegation);
                 })
-                let delegations = Delegations.find({},{sort:{shares:-1}}).fetch();
+                let delegations = Delegations.find({},{sort:{shares:1}}).fetch();
+
+
                 this.setState({
                     loading: false,
                     numDelegatiors:delegations.length,
