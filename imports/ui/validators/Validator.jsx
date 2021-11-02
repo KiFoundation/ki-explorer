@@ -143,7 +143,7 @@ export default class Validator extends Component{
                         return <PowerHistory
                             key={i}
                             type={history.type}
-                            prevVotingPower={history.prev_voting_power}
+                            prevVotingPower={history.prev_voting_power.voting_power || 0}
                             votingPower={history.voting_power}
                             time={history.block_time}
                             height={history.height}
@@ -180,7 +180,7 @@ export default class Validator extends Component{
         const delegatorShares = this.props.validator.delegator_shares / Math.pow(10, 6)
 
         const selfDelegation = this.props.validator.self_delegation * delegatorShares
-        const selfDelegationRatio = this.props.validator.self_delegation 
+        const selfDelegationRatio = this.props.validator.self_delegation
 
         const otherDelegation = delegatorShares - selfDelegation
         const otherDelegationRatio = 1 - this.props.validator.self_delegation
@@ -367,7 +367,7 @@ export default class Validator extends Component{
                                     path="/(validator|validators)/:address"
                                     render={() =>
                                         <div className="power-history mx-2 px-2">
-                                            <Row className="header text-nowrap d-none d-sm-flex latest-block-page mb-3 mt-4" style={{ border: 0 }}>                
+                                            <Row className="header text-nowrap d-none d-sm-flex latest-block-page mb-3 mt-4" style={{ border: 0 }}>
                                                 {/* <Col sm={2}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.hash</T></span></Col> */}
                                                 <Col md={4}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.height</T></span></Col>
                                                 <Col md={4}><span className="d-none d-md-inline text-uppercase dark-color font-500"><T>common.amount</T></span></Col>

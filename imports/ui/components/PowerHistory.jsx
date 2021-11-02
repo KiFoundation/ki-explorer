@@ -184,4 +184,3 @@ export default class PowerHistory extends React.Component {
         );
     }
 }
-
