@@ -16,7 +16,6 @@ import { MsgType } from '../components/MsgType.jsx';
 
 export const TransactionRow = (props) => {
     let tx = props.tx;
-    // console.log(tx);
     return <SentryBoundary>
         <Row className={(tx.code)?"tx-info invalid my-2 py-3 mx-1 list-border vertical-middle block-info block-info-custom cursor-pointer":"tx-info" + " bg-white my-2 py-3 mx-1 list-border vertical-middle block-info block-info-custom cursor-pointer"} onClick={() => props.history.push("/transactions/"+tx.txhash)}>
             <Col xs={(!props.blockList)?{size:6}:{size:12}} md={(!props.blockList)?{size:3}:{size:7}} lg={(!props.blockList)?{size:1}:{size:2}} className="text-truncate"><i className="fas fa-hashtag light-color"></i> <Link className="dark-color font-800" to={"/transactions/"+tx.txhash}>{tx.txhash}</Link></Col>
@@ -57,4 +56,3 @@ export const TransactionRow = (props) => {
         </Row>
     </SentryBoundary>
 }
-
