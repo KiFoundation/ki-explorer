@@ -72,7 +72,6 @@ export default class AccountDetails extends Component{
 
             if (result){
                 if (result.available && (result.available.length > 0)){
-
                     this.setState({
                         available: cloneDeep(result.available),
                         denom: Coin.StakingCoin.denom,
@@ -358,8 +357,9 @@ export default class AccountDetails extends Component{
                         </CardBody>
                     </Card></Col>
                 </Row>
-                <Row>
-                    <Col md={6}>
+                <Row className="mt-4">
+                <Col md={6}>
+                <Col md={12} className="vertical-align justify-start px-0"><h2 className="d-none d-lg-block font-800 dark-color"><T>common.delegations</T></h2></Col>
                         <Delegations
                             address={this.state.address}
                             delegations={this.state.delegations}
@@ -369,10 +369,11 @@ export default class AccountDetails extends Component{
                         />
                     </Col>
                     <Col md={6}>
+                        <Col md={3} xs={12} className="vertical-align justify-start px-0"><h2 className="d-none d-lg-block font-800 dark-color"><T>common.unbounding</T></h2></Col>
                         <Unbondings address={this.state.address} unbonding={this.state.unbondingDelegations}/>
                     </Col>
                 </Row>
-                <Row>
+                <Row  className="mt-5">
                     <Col>
                         <AccountTransactions delegator={this.state.address} denom={this.state.denom} limit={100}/>
                     </Col>

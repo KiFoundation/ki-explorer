@@ -13,7 +13,7 @@ export const MsgType = (props) => {
         return <span><Badge color="success"><T>messageTypes.multiSend</T></Badge>
               <Badge color="success">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>
 
-        // staking
+    // staking
     case "/cosmos.staking.v1beta1.MsgCreateValidator":
         return <Badge color="warning"><T>messageTypes.createValidator</T></Badge>;
     case "/cosmos.staking.v1beta1.MsgEditValidator":
@@ -25,7 +25,7 @@ export const MsgType = (props) => {
     case "/cosmos.staking.v1beta1.MsgBeginRedelegate":
         return <Badge color="warning"><T>messageTypes.redelegate</T></Badge>;
 
-        // gov
+    // gov
     case "/cosmos.gov.v1beta1.MsgSubmitProposal":
         return <Badge color="info"><T>messageTypes.submitProposal</T></Badge>
     case "/cosmos.gov.v1beta1.MsgDeposit":
@@ -33,7 +33,7 @@ export const MsgType = (props) => {
     case "/cosmos.gov.v1beta1.MsgVote":
         return <Badge color="info"><T>messageTypes.vote</T></Badge>;
 
-        // distribution
+    // distribution
     case "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission":
         return <span><Badge color="secondary"><T>messageTypes.withdrawComission</T></Badge><Badge color="secondary">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward":
@@ -41,71 +41,71 @@ export const MsgType = (props) => {
     case "/cosmos.distribution.v1beta1.MsgModifyWithdrawAddress":
         return <span><Badge color="secondary"><T>messageTypes.modifyWithdrawAddress</T></Badge><Badge color="secondary">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
 
-        // slashing
+    // slashing
     case "/cosmos.slashing.v1beta1.MsgUnjail":
         return <Badge color="danger"><T>messageTypes.unjail</T></Badge>;
 
-        // ibc
+    // ibc
     case "/cosmos.IBCTransferMsg":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCTransfer</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCTransfer</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/cosmos.IBCReceiveMsg":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCReceive</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCReceive</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
 
     case "/ibc.core.client.v1.MsgCreateClient":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCCreateClient</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCCreateClient</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.client.v1.MsgUpdateClient":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCUpdateClient</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCUpdateClient</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.client.v1.MsgUpgradeClient":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCUpgradeClient</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCUpgradeClient</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.client.v1.MsgSubmitMisbehaviour":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCSubmitMisbehaviour</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCSubmitMisbehaviour</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.client.v1.Height":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCHeight</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCHeight</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
 
     case "/ibc.core.channel.v1.MsgRecvPacket":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCReceivePacket</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCReceivePacket</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.Channel":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannel</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannel</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.Counterparty":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCCounterparty</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCCounterparty</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.Packet":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCPacket</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCPacket</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgAcknowledgement":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCAcknowledgement</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCAcknowledgement</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgChannelCloseConfirm":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannelCloseConfirm</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannelCloseConfirm</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgChannelCloseInit":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannelCloseInit</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannelCloseInit</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgChannelOpenAck":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannelOpenAck</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannelOpenAck</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgChannelOpenConfirm":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannelOpenConfirm</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannelOpenConfirm</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgChannelOpenInit":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannelOpenInit</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannelOpenInit</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgChannelOpenTry":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCChannelOpenTry</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCChannelOpenTry</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgTimeout":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCTimeout</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCTimeout</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.channel.v1.MsgTimeoutOnClose":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCTimeoutOnClose</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCTimeoutOnClose</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
 
     case "/ibc.core.connection.v1.MsgConnectionOpenAck":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCConnectionOpenAck</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCConnectionOpenAck</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.connection.v1.MsgConnectionOpenConfirm":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCConnectionOpenConfirm</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCConnectionOpenConfirm</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.connection.v1.MsgConnectionOpenInit":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCConnectionOpenInit</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCConnectionOpenInit</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.connection.v1.MsgConnectionOpenTry":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCConnectionOpenTry</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCConnectionOpenTry</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.connection.v1.ConnectionEnd":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCConnectionEnd</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCConnectionEnd</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.connection.v1.Counterparty":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCCounterparty</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCCounterparty</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "/ibc.core.connection.v1.Version":
-        return <Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCVersion</T></Badge>;
+        return <span><Badge color="light"><T>messageTypes.IBCVersion</T></Badge><Badge color="light">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
 
     case "/ibc.applications.transfer.v1.MsgTransfer":
-        return <span className="mr-1"><Badge style={{ backgroundColor: "#000080" }}><T>messageTypes.IBCMsgTransfer</T></Badge></span>;
+        return <span className="mr-1"><Badge color="light"><T>messageTypes.IBCMsgTransfer</T></Badge></span>;
 
     default:
         return <Badge color="primary">{props.type}</Badge>;

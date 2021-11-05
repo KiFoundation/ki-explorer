@@ -17,7 +17,7 @@ const ValidatorRow = (props) => {
                 <Col xs={6} md={2} className="data"><Link to={"/validator/"+props.validator.operator_address}><Avatar moniker={moniker} profileUrl={props.validator.profile_url} address={props.validator.address} list={true} /><span className="moniker font-800 primary-color">{moniker}</span></Link></Col>
                 <Col className="voting-power data text-left" xs={{size:6, offset:0}} md={{size:3, offset:0}} lg={2}><i className="material-icons d-md-none">power</i>  <span><span className="d-none d-lg-block">{props.validator.voting_power?numbro(props.validator.voting_power).format('0,0'):0}</span> ({props.validator.voting_power?numbro(props.validator.voting_power/props.totalPower).format('0.00%'):"0.00%"})</span></Col>
                 <Col className="self-delegation data" xs={{size:6, offset:0}} md={{size:2, offset:0}}><i className="material-icons d-md-none">equalizer</i> <span>{props.validator.self_delegation?numbro(props.validator.self_delegation).format('0.00%'):'N/A'}</span></Col>
-                
+
                 {(!props.inactive)?<Col className="commission data" xs={{size:6}} md={{size: 2, offset: 0}}><i className="material-icons d-md-none">call_split</i> <span>{props.validator.commission.commission_rates?numbro(props.validator.commission.commission_rates.rate).format('0.00%'):''}</span></Col>:''}
                 {(!props.inactive)?<Col className="uptime data" xs={{size:6}} md={1}><i className="material-icons d-md-none">network_check</i> <span>{props.validator.uptime?props.validator.uptime.toFixed(2):0}%</span></Col>:''}
 
@@ -60,6 +60,7 @@ export default class List extends Component{
     componentDidUpdate(prevProps){
         if (this.props.validators != prevProps.validators){
             if (this.props.validators.length > 0 && this.props.chainStatus){
+
                 this.setState({
                     validators: this.props.validators.map((validator, i) => {
                         return <ValidatorRow

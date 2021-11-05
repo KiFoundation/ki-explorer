@@ -66,7 +66,7 @@ getValidatorProfileUrl = (identity) => {
 getValidatorUptime = async (validatorSet) => {
 
     // get validator uptime
-  
+
     let url = `${API}/cosmos/slashing/v1beta1/params`;
     let response = HTTP.get(url);
     let slashingParams = JSON.parse(response.content)
@@ -74,7 +74,7 @@ getValidatorUptime = async (validatorSet) => {
     Chain.upsert({chainId:Meteor.settings.public.chainId}, {$set:{"slashing":slashingParams}});
 
     for(let key in validatorSet){
-        // console.log("Getting uptime validator: %o", validatorSet[key]);
+        console.log("Getting uptime validator: %o", validatorSet[key]);
         try {
             // console.log("=== Signing Info ===: %o", signingInfo)
 
@@ -221,6 +221,7 @@ Meteor.methods({
                 let response = HTTP.get(url);
                 let result = JSON.parse(response.content).validators;
                 result.forEach((validator) => validatorSet[validator.consensus_pubkey.key] = validator);
+                console.console.log(">>>>>>>>>>>>>", validatorSet);
             }
             catch(e){
                 console.log(url);
@@ -273,7 +274,7 @@ Meteor.methods({
                 console.log("Getting block at height: %o", height);
                 try{
                     let startGetHeightTime = new Date();
-                    
+
                     let response = HTTP.get(url);
 
                     // store height, hash, numtransaction and time in db
@@ -344,7 +345,7 @@ Meteor.methods({
                             result = JSON.parse(response.content).result;
                             // console.log("========= validator result ==========: %o", result)
                             validators = [...validators, ...result.validators];
-                                
+
                             // console.log(validators.length);
                             // console.log(parseInt(result.total));
                         }
@@ -379,7 +380,7 @@ Meteor.methods({
                     // console.log("before comparing precommits: %o", validators);
 
                     // Tendermint v0.33 start using "signatures" in last block instead of "precommits"
-                    let precommits = block.block.last_commit.signatures; 
+                    let precommits = block.block.last_commit.signatures;
                     if (precommits != null){
                         // console.log(precommits);
                         for (let i=0; i<precommits.length; i++){
@@ -422,7 +423,7 @@ Meteor.methods({
                             // ValidatorRecords.update({height:height,address:record.address},record);
                         }
                     }
-                        
+
                     let startBlockInsertTime = new Date();
                     Blockscon.insert(blockData);
                     let endBlockInsertTime = new Date();
@@ -466,7 +467,7 @@ Meteor.methods({
                         valData.unbonding_height = parseInt(valData.unbonding_height)
 
                         let valExist = Validators.findOne({"consensus_pubkey.key":v});
-                            
+
                         // console.log(valData);
 
                         // console.log("===== voting power ======: %o", valData)
@@ -474,7 +475,7 @@ Meteor.methods({
 
                         // console.log(analyticsData.voting_power);
                         if (!valExist && valData.consensus_pubkey){
-                                
+
                             // let val = getValidatorFromConsensusKey(validators, v);
                             // get the validator hex address and other bech32 addresses.
 
@@ -485,7 +486,7 @@ Meteor.methods({
                             console.log("get bech32 consensus pubkey");
                             valData.bech32ConsensusPubKey = Meteor.call('pubkeyToBech32', valData.consensus_pubkey, Meteor.settings.public.bech32PrefixConsPub);
 
-                            
+
                             valData.address = Meteor.call('getAddressFromPubkey', valData.consensus_pubkey);
                             valData.bech32ValConsAddress = Meteor.call('hexToBech32', valData.address, Meteor.settings.public.bech32PrefixConsAddr);
 
@@ -494,7 +495,7 @@ Meteor.methods({
                             if (validatorSet[v])
                                 validatorSet[v].bech32ValConsAddress = valData.bech32ValConsAddress;
 
-                                
+
                             // First time adding validator to the database.
                             // Fetch profile picture from Keybase
 
@@ -506,12 +507,12 @@ Meteor.methods({
                                     console.log("Error fetching keybase: %o", e)
                                 }
                             }
-                                    
+
 
                             valData.accpub = Meteor.call('pubkeyToBech32', valData.consensus_pubkey, Meteor.settings.public.bech32PrefixAccPub);
                             valData.operator_pubkey = Meteor.call('pubkeyToBech32', valData.consensus_pubkey, Meteor.settings.public.bech32PrefixValPub);
 
-                            // insert first power change history 
+                            // insert first power change history
 
                             // valData.voting_power = validators[valData.consensusPubkey.value]?parseInt(validators[valData.consensusPubkey.value].votingPower):0;
                             valData.voting_power = validators[valData.address]?parseInt(validators[valData.address].voting_power):0;
@@ -593,23 +594,23 @@ Meteor.methods({
 
                         // only update validator infor during start of crawling, end of crawling or every validator update window
                         if ((height == curr+1) || (height == Meteor.settings.params.startHeight+1) || (height == until) || (height % Meteor.settings.params.validatorUpdateWindow == 0)){
-                            if ((height == Meteor.settings.params.startHeight+1) || (height % Meteor.settings.params.validatorUpdateWindow == 0)){    
+                            if ((height == Meteor.settings.params.startHeight+1) || (height % Meteor.settings.params.validatorUpdateWindow == 0)){
                                 if (valData.status == 'BOND_STATUS_BONDED'){
                                     url = `${API}/cosmos/staking/v1beta1/validators/${valData.operator_address}/delegations/${valData.delegator_address}`
                                     try{
                                         console.log("Getting self delegation");
-        
+
                                         let response = HTTP.get(url);
                                         let selfDelegation = JSON.parse(response.content).delegation_response;
-        
+
                                         valData.self_delegation = (selfDelegation.delegation && selfDelegation.delegation.shares)?parseFloat(selfDelegation.delegation.shares)/parseFloat(valData.delegator_shares):0;
-        
+
                                     }
                                     catch(e){
                                         console.log(url);
                                         console.log("Getting self delegation: %o", e);
                                         valData.self_delegation = 0;
-                                            
+
                                     }
                                 }
                             }
@@ -629,7 +630,7 @@ Meteor.methods({
                     }
 
                     // fetching keybase every base on keybaseFetchingInterval settings
-                    // default to every 5 hours 
+                    // default to every 5 hours
 
                     if (height == curr+1){
 
@@ -649,7 +650,7 @@ Meteor.methods({
                                         let profileUrl = getValidatorProfileUrl(validator.description.identity)
                                         if (profileUrl) {
                                             bulkValidators.find({address: validator.address}).upsert().updateOne({$set:{'profile_url':profileUrl}});
-                                        }    
+                                        }
                                     }
                                 } catch (e) {
                                     console.log("Error fetching Keybase for %o: %o", validator.address, e)

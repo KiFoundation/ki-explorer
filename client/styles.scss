@@ -304,7 +304,7 @@ span#network-nav.network-name{
         border: 0;
         box-shadow: none;
       }
-    
+
       .btn {
         padding: 0.4rem;
       }
@@ -377,7 +377,7 @@ span#network-nav.network-name{
     }
 
     .input-group-append {
-      
+
       .btn {
         box-shadow: inset 0 -1px 0 #ddd;
       }
@@ -658,9 +658,9 @@ span#network-nav.network-name{
     }
   }
   .address{
-    white-space: normal; 
+    white-space: normal;
     @include md {
-      white-space: nowrap; 
+      white-space: nowrap;
     }
   }
 
@@ -1218,7 +1218,7 @@ span#network-nav.network-name{
     font-weight: 400;
     padding: 7px 10px;
     margin-right: 5px;
-    font-size: 12px;
+    font-size: 11px;
     border-radius: 50px;
   }
 
@@ -1233,6 +1233,11 @@ span#network-nav.network-name{
 
   }
 
+  .badge-light {
+    background-color: #e0ebff;
+    color: #4e60dd;
+
+  }
   .badge-secondary {
     background-color: #f6f2ff;
     color: #9c6cff;

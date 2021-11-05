@@ -21,15 +21,15 @@ export const TransactionRow = (props) => {
             <Col xs={(!props.blockList)?{size:6}:{size:12}} md={(!props.blockList)?{size:3}:{size:7}} lg={(!props.blockList)?{size:1}:{size:2}} className="text-truncate"><i className="fas fa-hashtag light-color"></i> <Link className="dark-color font-800" to={"/transactions/"+tx.txhash}>{tx.txhash}</Link></Col>
 
             <Col xs={5} md={3} lg={2} className="text-nowrap">
-                {(tx.tx.body.messages && tx.tx.body.messages.length >0)?tx.tx.body.messages.map((msg,i) => {
-                    return <MsgType key={i} type={msg["@type"]} num={tx.tx.body.messages.length}/>
-                }):''}
+                {(tx.tx.body.messages && tx.tx.body.messages.length >0)?
+                    <MsgType  type={tx.tx.body.messages[0]["@type"]} num={tx.tx.body.messages.length}/>
+              :''}
             </Col>
 
             <Col xs={5} md={3} lg={2} className="text-nowrap">
-                {(tx.tx.body.messages && tx.tx.body.messages.length >0)?tx.tx.body.messages.map(msg => {
-                    return <Amounts msg={msg} hash={tx.txhash} invalid={(!!tx.code)}/>
-                }):''}
+                {(tx.tx.body.messages && tx.tx.body.messages.length >0)?
+                     <Amounts msg={tx.tx.body.messages[0]} hash={tx.txhash} invalid={(!!tx.code)}/>
+                :''}
             </Col>
 
             {(!props.blockList)?<Col xs={6} md={9} lg={{size:2,order:"last"}} className="text-nowrap"><span className="vertical-middle"><i className="material-icons mr-2">schedule</i> {tx.block()?<TimeAgo time={tx.block().time} />:''}</span></Col>:''}

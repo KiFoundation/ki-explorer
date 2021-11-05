@@ -23,27 +23,28 @@ export default class Amounts extends Component {
     render(){
         let msg = this.props.msg;
         let hash = this.props.hash;
-
-        switch (msg.type){
+        switch (msg["@type"]){
         // bank
-        case "cosmos-sdk/MsgSend":
+        case "/cosmos.bank.v1beta1.MsgSend":
+            // console.log(">>>>>>>>", msg)
+
             let amount = '';
-            amount = msg.value.amount.map((coin) => new Coin(coin.amount).toString()).join(', ')
+            amount = msg.amount.map((coin) => new Coin(coin.amount).toString()).join(', ')
             return <span className="fee">{amount}</span>
-        case "cosmos-sdk/MsgMultiSend":
+        case "/cosmos.bank.v1beta1.MsgMultiSend":
             return <MultiTx  hash={hash} msg={msg}/>
 
             // staking
-        case "cosmos-sdk/MsgDelegate":
-            return <span className="fee">{new Coin(msg.value.amount.amount).toString()}</span>
-        case "cosmos-sdk/MsgUndelegate":
-            return <span className="fee">{new Coin(msg.value.amount.amount).toString()}</span>
-        case "cosmos-sdk/MsgBeginRedelegate":
-            return <span className="fee">{new Coin(msg.value.amount.amount).toString()}</span>
+        case "/cosmos.staking.v1beta1.MsgDelegatee":
+            return <span className="fee">{new Coin(msg.amount.amount).toString()}</span>
+        case "/cosmos.staking.v1beta1.MsgUndelegate":
+            return <span className="fee">{new Coin(msg.amount.amount).toString()}</span>
+        case "/cosmos.staking.v1beta1.MsgBeginRedelegate":
+            return <span className="fee">{new Coin(msg.amount.amount).toString()}</span>
 
             // gov
         case "cosmos-sdk/MsgDeposit":
-            return  <span className="fee">{msg.value.amount.map((amount,i) =>new Coin(amount.amount).toString()).join(', ')}</span>
+            return  <span className="fee">{msg.amount.map((amount,i) =>new Coin(amount.amount).toString()).join(', ')}</span>
 
 /*        // distribution
         case "cosmos-sdk/MsgWithdrawValidatorCommission":
