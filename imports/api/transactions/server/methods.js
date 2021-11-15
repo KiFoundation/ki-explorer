@@ -32,7 +32,7 @@ Meteor.methods({
                     // console.log(url);
                     // console.log("tx not found: %o")
                     console.log("Getting transaction %o: %o", transactions[i].txhash, e);
-                    bulkTransactions.find({txhash:transactions[i].txhash}).updateOne({$set:{processed:true, missing:true}});                    
+                    bulkTransactions.find({txhash:transactions[i].txhash}).updateOne({$set:{processed:true, missing:true}});
                 }
             }
             if (bulkTransactions.length > 0){

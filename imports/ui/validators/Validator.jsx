@@ -143,7 +143,7 @@ export default class Validator extends Component{
                         return <PowerHistory
                             key={i}
                             type={history.type}
-                            prevVotingPower={history.prev_voting_power.voting_power || 0}
+                            prevVotingPower={history.prev_voting_power || 0}
                             votingPower={history.voting_power}
                             time={history.block_time}
                             height={history.height}
