@@ -29,7 +29,7 @@
     "mdi-react": "^7.0.0",
     "mem": ">=4.0.0",
     "meteor-node-stubs": "^0.4.1",
-    "minimist": ">=1.2.2",
+    "minimist": ">=1.2.6",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "numbro": "^2.1.2",
@@ -66,6 +66,6 @@
     "eslint-plugin-meteor": "^5.2.0",
     "eslint-plugin-react": "^7.17.0",
     "mem": ">=4.0.0",
-    "minimist": ">=1.2.2"
+    "minimist": ">=1.2.6"
   }
 }
