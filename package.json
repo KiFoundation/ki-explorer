@@ -30,7 +30,7 @@
     "mem": ">=4.0.0",
     "meteor-node-stubs": "^0.4.1",
     "minimist": ">=1.2.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.27",
     "numbro": "^2.1.2",
     "plottable": "^3.8.6",
